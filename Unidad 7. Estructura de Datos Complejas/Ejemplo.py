@@ -1,23 +1,61 @@
-# creamos el diccionario donde se guardan los nombres de los alumnos y las notas correspondientes:
-alumnos = {}
+# Diccionario de productos y su respectivo stock. Claves (nombres) y Valores (stock)
 
-# ciclo for para pedir nombres y notas de los 3 alumnos
+stock = {
+    "filtro de aire": 150,
+    "filtro de combustible": 120,
+    "bidón de aceite x 4 Lts.": 75,
+    "filtro de polen": 111
+}
 
-for i in range(3):
-    nombre = input(f"Ingrese el nombre del alumno {i+1}: ").strip()
-    #print(nombre)
+while True:
+    print("Opciones de Menú")
+    print("1. Consultar stock de un producto")
+    print("2. Agregar unidades de stock a un producto existente")
+    print("3. Agregar un producto nuevo")
+    print("4. Salir.")
 
-    print(f"Ingrese las 3 notas de {nombre}: ")
-    primera_nota = float(input("Primera nota: "))
-    segunda_nota = float(input("Segunda nota: "))
-    tercera_nota = float(input("Tercera nota: "))
+    opcion = input("Elige una de las opciones: ").strip()
 
-    # guardo las notas en una tupla (diccionario)
-    alumnos[nombre] = (primera_nota, segunda_nota, tercera_nota)
+    if opcion == "1":
+        producto = input("Ingrese el nombre del producto: ").strip().lower()
 
-# Procedimiento para obtener y mostrar el promedio
-print("Promedio de alumnos: ")
-for nombre, notas in alumnos.items():
-    promedio = sum(notas) / len(notas)
-
-    print(f"{nombre}: {promedio:.2f}") # el promedio se muestra con 2 decimales
+        if producto in stock:
+            print(f"Stock de {producto}: {stock[producto]} unidades")
+        else: 
+            print(f"El producto seleccionado '{producto}' no existe en el inventario")
+    
+    elif opcion == "2":
+        producto = input("producto al que desea agregar stock: ").strip().lower()
+        if producto in stock:
+            while True:
+                cantidad = input("Cantidad a agregar: ").strip()
+                if cantidad.isdigit():
+                    cantidad = int(cantidad)
+                    stock[producto] += cantidad
+                    print(f"Se agregaron {cantidad} unidades de stock a {producto}. Nuevo Stock: {stock[producto]}")
+                    break
+                else: 
+                    print("Ingrese un número válido.")
+        else:
+            print("El producto no existe. Ingrese la opción 3 para adicionarlo.")
+        
+    elif opcion == "3":
+        producto_nuevo = input("Ingrese el nombre del nuevo producto: ").strip().lower()
+        if producto_nuevo in stock:
+            print("El producto ingresado existe.")
+        else:
+            while True:
+                cantidad = input("Ingrese la cantidad inicial: ").strip()
+                if cantidad.isdigit():
+                    cantidad = int(cantidad)
+                    stock[producto_nuevo] = cantidad
+                    print(f"El producto '{producto_nuevo}' agregado con {cantidad} unidades.")
+                    break
+                else:
+                    print("Ingrese un número válido.")
+    
+    elif opcion == "4":
+        print("Hasta pronto!")
+        break    
+    else: 
+        print("Opción inválida.")
