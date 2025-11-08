@@ -1,0 +1,2 @@
+Nombre, Precio, CantidadDestornillador, 200.04, 5
+Abrazadera, 55.5, 10Martillo, 123.24, 2
