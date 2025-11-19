@@ -1,5 +1,1 @@
-Destornillador, 200.04, 5
-Abrazadera, 55.5, 10
-Martillo, 123.24, 2
-Cinta 3M x 5 mts,1759,9
-Pintura x 5 Lts., 45200, 2
+Destornillador,200.04,5Abrazadera,55.5,10Martillo,123.24,2Cinta aisladora x 3 Mts.,345.0,1
