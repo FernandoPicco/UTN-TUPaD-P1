@@ -20,11 +20,45 @@ def obtener_datos_paises():
     return paises
 
 # 2) Resuelvo las funciones asociadas al menú principal
+
+# 2.1) Función auxiliar para mostrar país
+def mostrar_pais(pais):
+    print(
+        f"{pais['nombre']:<12} | "
+        f"Población: {pais['poblacion']:>12.0f} | "
+        f"Superficie: {pais['superficie']:>10.0f} | "
+        f"Continente: {pais['continente']}"
+    )
     # Opción 1
 def buscar_nombre_paises():
     
     paises = obtener_datos_paises() # Esta función se encargará de devolver todos los datos asociados 
-    print(paises)                   # a cada país (nombre, población, continente, etc.)
+                                    # a cada país (nombre, población, continente, etc.)
+
+    termino = input("Ingrese el nombre del país o parte del nombre: ").strip()
+    if termino == "":
+        print("No ingresó ningún nombre en la búsqueda.")
+        return
+    
+    # validación mayúsculas y minúsculas
+    termino_normalizado = termino.casefold()
+
+    # lista para guardar los países que coinciden:
+    coincidencia = []
+
+    for pais in paises:
+        nombre_normalizado = pais["nombre"].casefold()
+        # coincidencia normal o exacta
+        if termino_normalizado in nombre_normalizado:
+            coincidencia.append(pais)
+
+    if len(coincidencia) == 0:
+        print("No se encontraron países que coincidan con la búsqueda.")
+    else:
+        print(f"Se encontraron {len(coincidencia)} país(es): ")
+        for pais in coincidencia:
+            mostrar_pais(pais)
+    print()
 
 def mostrar_menu():
     # Para mostrar constantemente el menú:
