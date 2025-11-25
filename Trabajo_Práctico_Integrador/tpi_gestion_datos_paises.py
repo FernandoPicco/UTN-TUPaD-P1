@@ -10,12 +10,14 @@ import csv
 nombre_archivo = "dataset_paises.csv"
 paises = []
 def obtener_datos_paises():
+    
     with open(nombre_archivo, newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo) # La función DictReader(), devuelve un iterador devolviendo un
                                          # diccionario clave/valor a partir de la lectura de las líneas 
                                          # del archivo csv. 
         for fila in lector:
             paises.append({"nombre": fila["nombre"], "poblacion": float(fila["poblacion"]), "superficie": float(fila["superficie"]), "continente": fila["continente"]})
+    return paises
 
 # 2) Resuelvo las funciones asociadas al menú principal
     # Opción 1
@@ -40,7 +42,7 @@ def mostrar_menu():
         opcion = input("Ingrese opción: ").strip()
         match opcion:
             case '1':
-                print("Buscar por países (coincidencia parc o exacta)")
+                buscar_nombre_paises()
             case '2':
                 print("Filtrar por continente")
             case '3':
