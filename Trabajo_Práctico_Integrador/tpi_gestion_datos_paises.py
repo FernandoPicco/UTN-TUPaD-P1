@@ -10,6 +10,22 @@
 import csv
 nombre_archivo = "dataset_paises.csv"
 
+# 3.2) Funciones auxiliares para quitar acentos y normalizar texto
+
+    # Función para quitar acentos
+def quitar_acentos(texto):
+    texto = texto.replace("á", "a").replace("Á", "a")
+    texto = texto.replace("é", "e").replace("É", "e")
+    texto = texto.replace("í", "i").replace("Í", "i")
+    texto = texto.replace("ó", "o").replace("Ó", "o")
+    texto = texto.replace("ú", "u").replace("Ú", "u")
+    texto = texto.replace("ñ", "n").replace("Ñ", "n")
+    return texto
+
+def normalizar(texto):
+    # quita acentos y convierte a minúsculas
+    return quitar_acentos(texto.casefold())
+
 def obtener_datos_paises():
     paises = []
     with open(nombre_archivo, newline="", encoding="utf-8") as archivo:
@@ -53,13 +69,13 @@ def buscar_nombre_paises():
         return
     
     # validación mayúsculas y minúsculas
-    termino_normalizado = termino.casefold()
+    termino_normalizado = normalizar(termino)
 
     # lista para guardar los países que coinciden:
     coincidencia = []
 
     for pais in paises:
-        nombre_normalizado = pais["nombre"].casefold()
+        nombre_normalizado = normalizar(pais["nombre"])
         # coincidencia normal o exacta
         if termino_normalizado in nombre_normalizado:
             coincidencia.append(pais)
@@ -89,12 +105,12 @@ def filtrar_por_continente():
         print("No ingresó ningún continente en la búsqueda.")
         return
     # validación mayúsculas y minúsculas
-    termino_normalizado = termino.casefold()
+    termino_normalizado = normalizar(termino)
 
     # Buscar coincedencias
     coincidencia = []
     for pais in paises:
-        continente_normalizado = pais["continente"].casefold()
+        continente_normalizado = normalizar(pais["continente"])
         if termino_normalizado in continente_normalizado:
             coincidencia.append(pais)
     
