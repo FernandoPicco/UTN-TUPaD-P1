@@ -66,6 +66,7 @@ def buscar_nombre_paises():
     
     paises = obtener_datos_paises() # Esta función se encargará de devolver todos los datos asociados 
                                     # a cada país (nombre, población, continente, etc.)
+    print("\n***Búsqueda de país por nombre (coincidencia parcial o exacta)***")
 
     termino = input("Ingrese el nombre del país o parte del nombre: ").strip()
     if termino == "":
@@ -96,6 +97,7 @@ def buscar_nombre_paises():
 def filtrar_por_continente():
     # cargar todos los países desde el archivo csv
     paises = obtener_datos_paises()
+    print("\n***Filtrar países por continente***")
 
     # obtener desde el dataset el conjunto de continentes disponibles   
     continentes_disponibles = sorted({pais["continente"] for pais in paises})
@@ -131,7 +133,7 @@ def filtrar_por_continente():
 def filtrar_por_rango_poblacion():
     # cargar todos los países
     paises = obtener_datos_paises()
-    print("***Filtrar por rango de población***")
+    print("\n***Filtrar por rango de población***")
     print("Los valores se ingresan en cantidad de habitantes (ej: 10000000)")  
 
     # Pedir población mínima y máxima con validación
@@ -163,7 +165,7 @@ def filtrar_por_rango_poblacion():
 def filtrar_por_rango_superficie():
     # cargar todos los países
     paises = obtener_datos_paises()
-    print("***Filtrar por rango de superficie***")
+    print("\n***Filtrar por rango de superficie***")
     print("Los valores se ingresan en km² (ej: 1000000)")
 
     # Pedir superficie mínima y máxima
@@ -322,7 +324,7 @@ def ver_todos_los_registros():
         print("No hay datos para mostrar.")
         print()
         return
-    print("***Lista completa de países en el dataset***")
+    print("\n***Lista completa de países en el dataset***\n")
     for pais in paises:
         mostrar_pais(pais)
     print()
