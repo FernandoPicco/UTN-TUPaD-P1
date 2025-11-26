@@ -8,9 +8,9 @@
 # 3.1) Defino la función "obtener_datos_paises".
 import csv
 nombre_archivo = "dataset_paises.csv"
-paises = []
+
 def obtener_datos_paises():
-    
+    paises = []
     with open(nombre_archivo, newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo) # La función DictReader(), devuelve un iterador devolviendo un
                                          # diccionario clave/valor a partir de la lectura de las líneas 
@@ -60,6 +60,42 @@ def buscar_nombre_paises():
             mostrar_pais(pais)
     print()
 
+    # Opción 2
+def filtrar_por_continente():
+    # cargar todos los países desde el archivo csv
+    paises = obtener_datos_paises()
+
+    # obtener desde el dataset el conjunto de continentes disponibles   
+    continentes_disponibles = sorted({pais["continente"] for pais in paises})
+
+    print("Continentes disponibles en le dataset: ")
+    for cont in continentes_disponibles:
+        print(f" - {cont}")
+    # Pedir a usuario el continente (o parte del nombre)
+    termino = input("Ingrese el continente o parte del nombre: ").strip()
+    if termino == "":
+        print("No ingresó ningún continente en la búsqueda.")
+        return
+    # validación mayúsculas y minúsculas
+    termino_normalizado = termino.casefold()
+
+    # Buscar coincedencias
+    coincidencia = []
+    for pais in paises:
+        continente_normalizado = pais["continente"].casefold()
+        if termino_normalizado in continente_normalizado:
+            coincidencia.append(pais)
+    
+    #Mostrar resultados
+    if len(coincidencia)==0:
+        print("No se encontraron países para ese continente.")
+    else:
+        print(f"Se encontraron {len(coincidencia)} país(es): ")
+        for pais in coincidencia:
+            mostrar_pais(pais)
+
+    print()
+
 def mostrar_menu():
     # Para mostrar constantemente el menú:
     while True:
@@ -78,7 +114,7 @@ def mostrar_menu():
             case '1':
                 buscar_nombre_paises()
             case '2':
-                print("Filtrar por continente")
+                filtrar_por_continente()
             case '3':
                 print("Filtrar por rango de población")
             case '4':
