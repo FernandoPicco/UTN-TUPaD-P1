@@ -226,12 +226,15 @@ def filtrar_por_rango_superficie():
     print("¿Cómo desea ordenar los resultados?")
     print("A- Ascendente (de menor a mayor superficie)")
     print("D- Descendente (de mayor a menor superficie)")
-    orden = input("Ingrese A ó D >> : ").strip().casefold()
-
-    if orden == "d":
-        descencente = True
-    else:
-        descencente = False
+    
+    # Validación del orden (A / D)
+    while True:
+        orden = input("Ingrese A ó D >> : ").strip().casefold()
+        if orden in ("a", "d"):
+            break
+        print("Opción inválida. Debe ingresar 'A' o 'D'.")
+    
+    descencente = (orden == "d")
     
     # Ordenar por superficie 
     filtrados_ordenados = sorted(filtrados, key=lambda p:p["superficie"], reverse=descencente)
