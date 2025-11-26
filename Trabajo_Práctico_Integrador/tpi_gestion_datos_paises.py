@@ -185,6 +185,45 @@ def filtrar_por_rango_superficie():
         mostrar_pais(pais)
     print()
 
+    # Opción 5
+def ordenar_paises():
+    paises = obtener_datos_paises()
+    print("\n***Ordenar Países***")
+    print("1. Por nombre")
+    print("2. Por población")
+    print("3. Por superficie")
+
+    criterio = input("Elija criterio (1, 2 ó 3): ").strip()
+    if criterio not in ("1", "2", "3"):
+        print("Criterio inválido. Volviendo al menú principal")
+        print()
+        return  
+    # Elegir orden (ascendente o descendente)
+    print("Orden: ")
+    print("A- Ascendente (de menor a mayor superficie)")
+    print("D- Descendente (de mayor a menor superficie)")
+    orden = input("Ingrese A ó D >> : ").strip().casefold()
+
+    if orden == "d":
+        descencente = True
+    else:
+        descencente = False
+
+    # Ordenar según criterio elegido
+    if criterio == "1":
+        paises_ordenados = sorted(paises, key=lambda p:p["nombre"].casefold(), reverse=descencente)
+    elif criterio == "2":
+        paises_ordenados = sorted(paises, key=lambda p:p["poblacion"], reverse=descencente)
+    else:
+        paises_ordenados = sorted(paises, key=lambda p:p["superficie"], reverse=descencente)
+    
+    # Mostrar resultados
+    print("Países Ordenados: ")
+    for pais in paises_ordenados:
+        mostrar_pais(pais)
+    print()
+
+
 
 def mostrar_menu():
     # Para mostrar constantemente el menú:
@@ -210,13 +249,13 @@ def mostrar_menu():
             case '4':
                 filtrar_por_rango_superficie()
             case '5':
-                print("Ordenar países")
+                ordenar_paises()
             case '6':
                 print("Mostrar estadísticas")
             case '7':
                 print("Ver todos los registros")
             case '8':
-                print("Gracias por utilizar nuestra aplicación")
+                print("¡Gracias por utilizar nuestra aplicación!¡Hasta pronto!")
                 break
             case _:
                 print("La opción seleccionada no es válida para nuestra aplicación")
