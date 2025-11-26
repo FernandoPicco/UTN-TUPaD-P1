@@ -29,6 +29,17 @@ def mostrar_pais(pais):
         f"Superficie: {pais['superficie']:>10.0f} | "
         f"Continente: {pais['continente']}"
     )
+
+# 2.2) Función auxiliar para validar la entrada de población
+def solicitar_entero_no_negativo(mensaje):
+    #Pide un número entero >= 0. Repite hasta que el usuario ingrese bien.
+    while True:
+        texto_ingresado = input(mensaje).strip()
+        if not texto_ingresado.isdigit(): #verificamos que contenga solo digitos.
+            print("Debe ingresar un número entero 0 o mayor.")
+            continue
+        return int(texto_ingresado)
+    
     # Opción 1
 def buscar_nombre_paises():
     
@@ -93,8 +104,40 @@ def filtrar_por_continente():
         print(f"Se encontraron {len(coincidencia)} país(es): ")
         for pais in coincidencia:
             mostrar_pais(pais)
-
     print()
+
+    # Opción 3
+def filtrar_por_rango_poblacion():
+    # cargar todos los países
+    paises = obtener_datos_paises()
+    print("***Filtrar por rango de población***")
+    print("Los valores se ingresan en cantidad de habitantes (ej: 10000000)")  
+
+    # Pedir población mínima y máxima con validación
+    minimo = solicitar_entero_no_negativo("Ingrese población mínima: ")
+    maximo = solicitar_entero_no_negativo("Ingrese población máxima: ")
+
+    # Validar coherencia del rango
+    if maximo < minimo:
+        print("La población máxima no puede ser menor que la mínima.")
+        print(f"Intercambiando valores: mínimo = {maximo}, máximo = {minimo}")
+        minimo, maximo = maximo, minimo
+    
+    #Filtrar países dentro del rango [minimo, maximo]
+    coincidencia = []
+    for pais in paises:
+        poblacion = pais["poblacion"]
+        if minimo <= poblacion <= maximo:
+            coincidencia.append(pais)
+    # Mostrar resultados
+    if len(coincidencia) == 0:
+         print("No se encontraron países en ese rango de población.")
+    else:
+        print(f"Se encontraron {len(coincidencia)} país(es) en ese rango: ")
+        for pais in coincidencia:       
+            mostrar_pais(pais)
+    print()
+
 
 def mostrar_menu():
     # Para mostrar constantemente el menú:
@@ -116,7 +159,7 @@ def mostrar_menu():
             case '2':
                 filtrar_por_continente()
             case '3':
-                print("Filtrar por rango de población")
+                filtrar_por_rango_poblacion()
             case '4':
                 print("Filtrar por rango de superficie")
             case '5':
