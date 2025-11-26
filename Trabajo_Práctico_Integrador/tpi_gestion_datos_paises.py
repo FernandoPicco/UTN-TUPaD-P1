@@ -210,29 +210,33 @@ def ordenar_paises():
     print("2. Por población")
     print("3. Por superficie")
 
+    # Validar criterio (1, 2, y 3)
     criterio = input("Elija criterio (1, 2 ó 3): ").strip()
     if criterio not in ("1", "2", "3"):
         print("Criterio inválido. Volviendo al menú principal")
         print()
         return  
-    # Elegir orden (ascendente o descendente)
+    
+    # Validar orden (ascendente o descendente)
     print("Orden: ")
     print("A- Ascendente (de menor a mayor superficie)")
     print("D- Descendente (de mayor a menor superficie)")
-    orden = input("Ingrese A ó D >> : ").strip().casefold()
+    
+    while True:
+        orden = input("Ingrese A ó D >> : ").strip().casefold()
+        if orden in ("a", "d"):
+            break
+        print("Opción inválida. Debe ingresar 'A' o 'D'.")
 
-    if orden == "d":
-        descencente = True
-    else:
-        descencente = False
+    descendente = (orden == "d")
 
     # Ordenar según criterio elegido
     if criterio == "1":
-        paises_ordenados = sorted(paises, key=lambda p:p["nombre"].casefold(), reverse=descencente)
+        paises_ordenados = sorted(paises, key=lambda p:p["nombre"].casefold(), reverse=descendente)
     elif criterio == "2":
-        paises_ordenados = sorted(paises, key=lambda p:p["poblacion"], reverse=descencente)
+        paises_ordenados = sorted(paises, key=lambda p:p["poblacion"], reverse=descendente)
     else:
-        paises_ordenados = sorted(paises, key=lambda p:p["superficie"], reverse=descencente)
+        paises_ordenados = sorted(paises, key=lambda p:p["superficie"], reverse=descendente)
     
     # Mostrar resultados
     print("Países Ordenados: ")
