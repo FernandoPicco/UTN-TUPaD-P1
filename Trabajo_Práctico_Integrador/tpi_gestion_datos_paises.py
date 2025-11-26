@@ -1,3 +1,4 @@
+
 # Pasos para resolver el TPI Programación I
 
 # 1) Resuelvo el menú. Es decir lo creo y diseño.
@@ -289,6 +290,18 @@ def mostrar_estadisticas():
         print(f" - {continente}: {cantidad}")
     print()
 
+    # Opción 7
+def ver_todos_los_registros():
+    paises = obtener_datos_paises()
+
+    if len(paises) == 0:
+        print("No hay datos para mostrar.")
+        print()
+        return
+    print("***Lista completa de países en el dataset***")
+    for pais in paises:
+        mostrar_pais(pais)
+    print()
 
 def mostrar_menu():
     # Para mostrar constantemente el menú:
@@ -318,7 +331,7 @@ def mostrar_menu():
             case '6':
                 mostrar_estadisticas()
             case '7':
-                print("Ver todos los registros")
+                ver_todos_los_registros()
             case '8':
                 print("¡Gracias por utilizar nuestra aplicación!¡Hasta pronto!")
                 break
