@@ -32,12 +32,46 @@ def normalizar(texto):
 
 def obtener_datos_paises():
     paises = []
-    with open(nombre_archivo, newline="", encoding="utf-8") as archivo:
-        lector = csv.DictReader(archivo) # La función DictReader(), devuelve un iterador devolviendo un
+    # with open(nombre_archivo, newline="", encoding="utf-8") as archivo:
+    #    lector = csv.DictReader(archivo) # La función DictReader(), devuelve un iterador devolviendo un
                                          # diccionario clave/valor a partir de la lectura de las líneas 
                                          # del archivo csv. 
-        for fila in lector:
-            paises.append({"nombre": fila["nombre"], "poblacion": float(fila["poblacion"]), "superficie": float(fila["superficie"]), "continente": fila["continente"]})
+    #    for fila in lector:
+    #        paises.append({"nombre": fila["nombre"], "poblacion": float(fila["poblacion"]), "superficie": float(fila["superficie"]), "continente": fila["continente"]})
+    #return paises
+    try:
+        # Intento abrir el archivo csv
+        with open(nombre_archivo, newline="", encoding="utf-8") as archivo:
+            lector = csv.DictReader(archivo)
+
+            for numero_fila, fila in enumerate(lector, start=2): 
+                # start=2 porque la línea 1 es el encabezado
+            # Validar que existan todas las columnas necesarias
+                columnas_obligatorias = ("nombre", "poblacion", "superficie", "continente")
+                if not all(col in fila and fila[col] != "" for col in columnas_obligatorias):
+                    print(f"[AVISO] Línea {numero_fila} ignorada: columnas faltantes o vacías -> {fila}")
+                    continue
+
+            # Validar que población y superficie sean numéricas
+                try:
+                    poblacion = float(fila["poblacion"])
+                    superficie = float(fila["superficie"])
+                except ValueError:
+                    print(f"[AVISO] Línea {numero_fila} ignorada: valores numéricos inválidos -> {fila}")
+                    continue
+
+            # Si todo está bien, agrego el país a la lista
+                paises.append({
+                    "nombre": fila["nombre"],
+                    "poblacion": poblacion,
+                    "superficie": superficie,
+                    "continente": fila["continente"]
+                })
+    except FileNotFoundError:
+        print(f"[ERROR] No se encontró el archivo '{nombre_archivo}'.")
+    except UnicodeDecodeError:
+        print(f"[ERROR] Problema de codificación al leer '{nombre_archivo}'. ¿Está guardado en UTF-8?")
+
     return paises
 
 # 2) Resuelvo las funciones asociadas al menú principal
