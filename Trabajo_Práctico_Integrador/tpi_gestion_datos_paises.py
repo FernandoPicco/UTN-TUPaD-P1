@@ -138,6 +138,53 @@ def filtrar_por_rango_poblacion():
             mostrar_pais(pais)
     print()
 
+    # Opción 4
+def filtrar_por_rango_superficie():
+    # cargar todos los países
+    paises = obtener_datos_paises()
+    print("***Filtrar por rango de superficie***")
+    print("Los valores se ingresan en km² (ej: 1000000)")
+
+    # Pedir superficie mínima y máxima
+    minimo = solicitar_entero_no_negativo("Ingrese superficie mínima (km²): ")
+    maximo = solicitar_entero_no_negativo("IIngrese superficie máxima (km²): ")
+
+    # Validar coherencia del rango
+    if maximo < minimo:
+        print("La superficie máxima no puede ser menor que la mínima.")
+        print(f"Intercambiando valores: mínima = {maximo}, máxima = {minimo}")
+        minimo, maximo = maximo, minimo
+    
+    # Filtrar países dentro del rango
+    filtrados = []
+    for pais in paises:
+        sup = pais["superficie"]
+        if minimo <= sup <= maximo:
+            filtrados.append(pais)
+    if len(filtrados) == 0:
+        print("No se encontraron países en ese rango de superficie.")
+        print()
+        return
+    # Preguntar orden: ascendente o descendente
+    print("¿Cómo desea ordenar los resultados?")
+    print("A- Ascendente (de menor a mayor superficie)")
+    print("D- Descendente (de mayor a menor superficie)")
+    orden = input("Ingrese A ó D >> : ").strip().casefold()
+
+    if orden == "d":
+        descencente = True
+    else:
+        descencente = False
+    
+    # Ordenar por superficie 
+    filtrados_ordenados = sorted(filtrados, key=lambda p:p["superficie"], reverse=descencente)
+
+    # Mostrar resultados
+    print(f"Se encontraron {len(filtrados_ordenados)} país(es) en ese rango: ")
+    for pais in filtrados_ordenados:
+        mostrar_pais(pais)
+    print()
+
 
 def mostrar_menu():
     # Para mostrar constantemente el menú:
@@ -161,7 +208,7 @@ def mostrar_menu():
             case '3':
                 filtrar_por_rango_poblacion()
             case '4':
-                print("Filtrar por rango de superficie")
+                filtrar_por_rango_superficie()
             case '5':
                 print("Ordenar países")
             case '6':
