@@ -1,5 +1,9 @@
+# Trabajo Práctico Integrador (TPI)
+    # Alumno: Fernando Picco <==> Comisión Nº10
+# Tema: Gestión de Datos de Países en Python: filtros, ordenamientos y estadísticas
 
-# Pasos para resolver el TPI Programación I
+#************************************************************************************
+# Resolución:
 
 # 1) Resuelvo el menú. Es decir lo creo y diseño.
     # 1.1) para poder mostrar el menú, primero defino la función "mostrar_menu()"
