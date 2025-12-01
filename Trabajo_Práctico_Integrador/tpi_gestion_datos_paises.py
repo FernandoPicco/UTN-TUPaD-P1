@@ -248,44 +248,67 @@ def filtrar_por_rango_superficie():
     # Opción 5
 def ordenar_paises():
     paises = obtener_datos_paises()
+    if not paises:
+        print("No hay datos para ordenar.")
+        return
+    
     print("\n***Ordenar Países***")
     print("1. Por nombre")
     print("2. Por población")
     print("3. Por superficie")
 
-    # Validar criterio (1, 2, y 3)
+    # Elegir criterio
     criterio = input("Elija criterio (1, 2 ó 3): ").strip()
-    if criterio not in ("1", "2", "3"):
-        print("Criterio inválido. Volviendo al menú principal")
-        print()
-        return  
     
-    # Validar orden (ascendente o descendente)
+    while criterio not in ("1", "2", "3"):
+        print("Opción inválida. Ingrese 1, 2 o 3.")
+        criterio = input("Elija criterio (1, 2 ó 3): ").strip()
+
+    # Armar texto del orden según el criterio
+    
+    if criterio == "1":
+        campo = "nombre"
+        desc_asc = "Ascendente (A → Z)"
+        desc_desc = "Descendente (Z → A)"
+    elif criterio == "2":
+        campo = "poblacion"
+        desc_asc = "Ascendente (de menor a mayor población)"
+        desc_desc = "Descendente (de mayor a menor población)"
+    else:
+        campo = "superficie"
+        desc_asc = "Ascendente (de menor a mayor superficie)"
+        desc_desc = "Descendente (de mayor a menor superficie)"
+
     print("Orden: ")
-    print("A- Ascendente (de menor a mayor superficie)")
-    print("D- Descendente (de mayor a menor superficie)")
+    print(f"A- {desc_asc}")
+    print(f"D- {desc_desc}")
+
+    # Elegir A / D con validación
     
     while True:
         orden = input("Ingrese A ó D >> : ").strip().casefold()
-        if orden in ("a", "d"):
-            break
-        print("Opción inválida. Debe ingresar 'A' o 'D'.")
+        if len(orden) != 1:
+            print("Opción inválida. Solo debe ingresar 'A' o 'D'.")
+            continue
+        if orden not in ("a", "d"):
+            print("Opción inválida. Debe ingresar 'A' o 'D'.")
+            continue
 
+        break
+    
     descendente = (orden == "d")
 
     # Ordenar según criterio elegido
-    if criterio == "1":
+    if campo == "nombre":
         paises_ordenados = sorted(paises, key=lambda p:p["nombre"].casefold(), reverse=descendente)
-    elif criterio == "2":
-        paises_ordenados = sorted(paises, key=lambda p:p["poblacion"], reverse=descendente)
-    else:
-        paises_ordenados = sorted(paises, key=lambda p:p["superficie"], reverse=descendente)
-    
+    else: # población y suuperficie
+        paises_ordenados = sorted(paises, key=lambda p:p[campo], reverse=descendente)
+        
     # Mostrar resultados
-    print("Países Ordenados: ")
+    print(f"\nSe encontraron {len(paises_ordenados)} país(es): \n")
     for pais in paises_ordenados:
         mostrar_pais(pais)
-    print()
+        print()
 
     # Opción 6
 def mostrar_estadisticas():
