@@ -34,11 +34,13 @@ La aplicación está diseñada de forma modular, con funciones independientes, v
 # Estructura del proyecto
 
 *** Proyecto-TPI ***
+- Capturas_Apuntes_TPI_P1.pdf  (Capturas de imágenes y apuntes con correcciones del código)
+- Dataset_paises_prueba.xls    (Para verificar población total y promedio) 
 - tpi_gestion_datos_paises.py  (Script principal del programa)
 - dataset_paises.csv           (Archivo CSV con los datos)  
 - README.md                    (Este archivo)
 - Presentación_TPI_P1.pdf      (Presentación en diapositivas)
-- Video_demostración.mp4:       (ejecución del programa) 
+- Trabajo Práctico Integrador_Programación_I.pdf (Desarrollo con marco teórico)
 
 # Instrucciones de ejecución 
 1. Asegurarse de tener Python 3.10 o superior.
