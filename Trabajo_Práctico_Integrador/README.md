@@ -12,8 +12,8 @@ Gestión de Datos de Países en Python: filtros, ordenamientos y estadísticas
 - Comisión: 10
 
 # Datos de los profesores
-Titular: Ariel Enferrel  
-Tutora: Martina Zabala
+- Titular: Ariel Enferrel  
+- Tutora: Martina Zabala
 
 # Descripción del proyecto
 Este proyecto forma parte del Trabajo Práctico Integrador de la materia Programación I.
