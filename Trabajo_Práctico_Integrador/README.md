@@ -41,6 +41,7 @@ La aplicación está diseñada de forma modular, con funciones independientes, v
 - README.md                    (Este archivo)
 - Presentación_TPI_P1.pdf      (Presentación en diapositivas)
 - Trabajo Práctico Integrador_Programación_I.pdf (Desarrollo con marco teórico)
+- Enlaces_Presentación.txt (Videos: presentación, ejecución código y GitHub)
 
 # Instrucciones de ejecución 
 1. Asegurarse de tener Python 3.10 o superior.
@@ -64,7 +65,7 @@ El proyecto utiliza solo librerías estándar de Python:
 
 # Links importantes
 * Repositorio GitHub: https://github.com/FernandoPicco/UTN-TUPaD-P1.git
-* Video explicativo del TPI:
+* Video explicativo del TPI: https://drive.google.com/file/d/1oOBvC7VifssjFQgUXdXcXBJ2jI3Qg-Jd/view?usp=sharing
 * Video demostración de ejecución: https://drive.google.com/file/d/1U-DWCy-qgcVD1f0nC3KkpIZr55us2dP-/view?usp=sharing
 
 # Ejemplos de entrada y salida
