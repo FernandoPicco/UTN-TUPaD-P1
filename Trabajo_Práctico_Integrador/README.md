@@ -34,11 +34,11 @@ La aplicación está diseñada de forma modular, con funciones independientes, v
 # Estructura del proyecto
 
 *** Proyecto-TPI ***
-- tpi_gestion_datos_paises.py     # Script principal del programa
-- dataset_paises.csv              # Archivo CSV con los datos
-- README.md                       # Este archivo
-- Presentación_TPI_P1.pdf         # Presentación en diapositivas
-- Video_demostración.mp4          # ejecución del programa
+- tpi_gestion_datos_paises.py               # Script principal del programa
+- dataset_paises.csv                        # Archivo CSV con los datos
+- README.md                                 # Este archivo
+- Presentación_TPI_P1.pdf                   # Presentación en diapositivas
+- Video_demostración.mp4                    # ejecución del programa
 
 # Instrucciones de ejecución 
 1. Asegurarse de tener Python 3.10 o superior.
@@ -92,10 +92,10 @@ Argentina  | Población:   45376763 | Superficie:   2780400 | Continente: Améri
 
 *** Estadísticas ***
 
-País con mayor población: India (1.393.409.038)
-País con menor superficie: Japón (377.975 km²)
-Población promedio del dataset: 325.000.000
-Superficie total del dataset: 44.000.000 km²
+- País con mayor población: India (1.393.409.038)
+- País con menor superficie: Japón (377.975 km²)
+- Población promedio del dataset: 325.000.000
+- Superficie total del dataset: 44.000.000 km²
 
 
 # Conclusión
