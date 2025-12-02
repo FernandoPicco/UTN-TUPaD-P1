@@ -34,11 +34,11 @@ La aplicación está diseñada de forma modular, con funciones independientes, v
 # Estructura del proyecto
 
 *** Proyecto-TPI ***
-- tpi_gestion_datos_paises.py               # Script principal del programa
-- dataset_paises.csv                        # Archivo CSV con los datos
-- README.md                                 # Este archivo
-- Presentación_TPI_P1.pdf                   # Presentación en diapositivas
-- Video_demostración.mp4                    # ejecución del programa
+- tpi_gestion_datos_paises.py  <<<Script principal del programa>>>
+- dataset_paises.csv           <<<Archivo CSV con los datos>>>  
+- README.md                    <<<Este archivo>>>
+- Presentación_TPI_P1.pdf      <<<Presentación en diapositivas>>>
+- Video_demostración.mp4       <<<ejecución del programa>>>   
 
 # Instrucciones de ejecución 
 1. Asegurarse de tener Python 3.10 o superior.
