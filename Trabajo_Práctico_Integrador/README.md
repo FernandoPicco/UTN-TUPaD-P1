@@ -38,7 +38,7 @@ La aplicación está diseñada de forma modular, con funciones independientes, v
 - dataset_paises.csv           (Archivo CSV con los datos)  
 - README.md                    (Este archivo)
 - Presentación_TPI_P1.pdf      (Presentación en diapositivas)
-- Video_demostración.mp4       (ejecución del programa) 
+- Video_demostración.mp4:       (ejecución del programa) 
 
 # Instrucciones de ejecución 
 1. Asegurarse de tener Python 3.10 o superior.
@@ -61,9 +61,9 @@ El proyecto utiliza solo librerías estándar de Python:
 *** No requiere instalación de librerías externas.
 
 # Links importantes
-* Repositorio GitHub:
+* Repositorio GitHub: https://github.com/FernandoPicco/UTN-TUPaD-P1.git
 * Video explicativo del TPI:
-* Video demostración de ejecución:
+* Video demostración de ejecución: https://drive.google.com/file/d/1U-DWCy-qgcVD1f0nC3KkpIZr55us2dP-/view?usp=sharing
 
 # Ejemplos de entrada y salida
 ==> Ejemplo de menú principal 
