@@ -90,13 +90,33 @@ Argentina  | Población:   45376763 | Superficie:   2780400 | Continente: Améri
 
 # Ejemplo de estadísticas
 
-*** Estadísticas ***
+***Estadísticas del dataset de países***
 
-- País con mayor población: India (1.393.409.038)
-- País con menor superficie: Japón (377.975 km²)
-- Población promedio del dataset: 325.000.000
-- Superficie total del dataset: 44.000.000 km²
+Cantidad total países: 10
+Población total: 2156641833 habitantes.
+Población promedio: 215664183 habitantes.
 
+Superficie total: 35768356 km².
+Superficie promedio: 3576836 km².
+
+País con mayor población:
+India        | Población:   1393409038 | Superficie:    3287263 | Continente: Asia
+
+País con menor población:
+Australia    | Población:     25925600 | Superficie:    7692024 | Continente: Oceanía
+
+País con mayor superficie:
+Canadá       | Población:     38008005 | Superficie:    9984670 | Continente: América
+
+País con menor superficie:
+Alemania     | Población:     83149300 | Superficie:     357022 | Continente: Europa
+
+Cantidad de países por continente:
+ - América: 3
+ - Asia: 2
+ - Europa: 2
+ - Oceanía: 1
+ - África: 2
 
 # Conclusión
 Este proyecto integra los conceptos fundamentales de Programación I:
